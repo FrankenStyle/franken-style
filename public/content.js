@@ -1,11 +1,24 @@
+// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+//   console.log("something happening from the extension");
+//   var data = request.data || {};
+
+//   var linksList = document.querySelectorAll('a');
+//   [].forEach.call(linksList, function (header) {
+//     conosole.log('inside')
+//     header.innerHTML = request.data;
+//   });
+//   sendResponse({ data: data, success: true });
+// });
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log("something happening from the extension");
   var data = request.data || {};
 
   var linksList = document.querySelectorAll('a');
   [].forEach.call(linksList, function (header) {
-    header.innerHTML = request.data;
+    // header.innerHTML = request.data;
+    console.log(header.style)
+    header.style.backgroundColor = '#' + request.data;
   });
   sendResponse({ data: data, success: true });
 });
-
