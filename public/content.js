@@ -41,20 +41,26 @@ var previousEl = null;
 
   document.addEventListener("mousedown", function (event) {
     var selectedEl = event.target;
-    var selectedID = selectedEl.class
-    console.log("selectedEl", selectedEl)
-  
+    var selectedClassName = selectedEl.className;
+    var selectedNode = selectedEl.nodeName;
+    var selectedClassList = selectedEl.classList;
+
+    // console.log("selectedEl", selectedEl)
+    // console.log("selectedClass", selectedClassName)
+    // console.log("selectedNode", selectedNode)
+    // console.log("selectedNode", selectedNode)
+
     if (selectedEl.nodeName) {
       if (previousEl != null) {
         previousEl.classList.remove("mouseHoverElement");
       }
       selectedEl.classList.add("mouseHoverElement");
       previousEl = selectedEl;
-       
-    chrome.runtime.sendMessage({selectedID:selectedID}, ()=>{
+
+    chrome.runtime.sendMessage({ selectedClassName, selectedNode, selectedClassList }, ()=>{
     })
     }
 
-   
-  
+
+
   }, false);

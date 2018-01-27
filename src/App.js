@@ -7,18 +7,23 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      fontColor: ''
+      fontColor: '',
+      element: 'Select an Element'
     }
 
     this.handleFontColorChange = this.handleFontColorChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  
+
   componentDidMount(){
-    chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
-      console.log("******",request)
-      var htmlID = request.selectedID
-      console.log("%^$%$%$%$", htmlID)
+    chrome.runtime.onMessage.addListener((request,sender,sendResponse) => {
+
+      var selectedClassName = request.selectedClassName;
+      var selectedNode = request.selectedNode;
+      var selectedClassList = request.selectedClassList;
+
+      console.log("request Obj", request)
+      this.setState({element: selectedNode})
       sendResponse({test:'test'})
     })
   }
@@ -41,7 +46,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">FrankenStyle</h1>
-          <div id="displayImg">display current element here</div>
+          <input type="text" value={this.state.element} id="displayImg"></input>
         </header>
         <form onSubmit={this.handleSubmit}>
             <input type="text" value={this.state.fontColor}  onChange={this.handleFontColorChange} id="fontColor" className="jscolor" >
