@@ -1,14 +1,25 @@
-// chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-//   console.log("something happening from the extension");
-//   var data = request.data || {};
 
-//   var linksList = document.querySelectorAll('a');
-//   [].forEach.call(linksList, function (header) {
-//     conosole.log('inside')
-//     header.innerHTML = request.data;
-//   });
-//   sendResponse({ data: data, success: true });
-// });
+
+
+// var previousEl = null;
+
+// document.addEventListener("mousemove", function (event) {
+//   var selectedEl = event.target;
+//   console.log("&%&%&%&%",selectedEl)
+
+//   if (selectedEl.nodeName) {
+//     if (previousEl != null) {
+//       previousEl.classList.remove("mouseHoverElement");
+//     }
+//     selectedEl.classList.add("mouseHoverElement");
+//     previousEl = selectedEl;
+//   }
+//   chrome.runtime.sendMessage({element:selectedEl}, ()=>{
+//   })
+
+// }, false);
+
+
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log("something happening from the extension");
@@ -16,9 +27,34 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
   var linksList = document.querySelectorAll('a');
   [].forEach.call(linksList, function (header) {
-    // header.innerHTML = request.data;
-    console.log(header.style)
     header.style.backgroundColor = '#' + request.data;
   });
   sendResponse({ data: data, success: true });
+
+
+  chrome.runtime.sendMessage({greeting:'hello'}, ()=>{
+  })
+
 });
+
+var previousEl = null;
+
+  document.addEventListener("mousedown", function (event) {
+    var selectedEl = event.target;
+    var selectedID = selectedEl.class
+    console.log("selectedEl", selectedEl)
+  
+    if (selectedEl.nodeName) {
+      if (previousEl != null) {
+        previousEl.classList.remove("mouseHoverElement");
+      }
+      selectedEl.classList.add("mouseHoverElement");
+      previousEl = selectedEl;
+       
+    chrome.runtime.sendMessage({selectedID:selectedID}, ()=>{
+    })
+    }
+
+   
+  
+  }, false);
