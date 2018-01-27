@@ -77,8 +77,18 @@ class App extends Component {
           }}> Click me </button> */}
             <button type="submit" value="Submit"> Change </button>
 
-
           </form>
+          <button onClick={() => {
+            chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+              chrome.storage.sync.get('element', function (store) {
+                if (store.element) {
+                  console.log(store.element)
+                } else {
+                  console.log("no element stored yet")
+                }
+              })
+              })
+            }}>What's in storage</button>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
