@@ -1,5 +1,7 @@
 /* global chrome */
 import React, { Component } from 'react';
+import {Tabs, Tab, TabList, TabPanel} from 'react-tabs'
+import 'react-tabs/style/react-tabs.css'
 import logo from './logo.svg';
 import './App.css';
 
@@ -43,11 +45,23 @@ class App extends Component {
           <h1 className="App-title">FrankenStyle</h1>
           <div id="displayImg">display current element here</div>
         </header>
+        <Tabs>
+        <TabList >
+        <Tab>Title 1</Tab>
+        <Tab>Title 2</Tab>
+        </TabList>
+        
+        <TabPanel>
         <form onSubmit={this.handleSubmit}>
             <input type="text" value={this.state.fontColor}  onChange={this.handleFontColorChange} id="fontColor" className="jscolor" >
             </input>
             <button type="submit" value="Submit"> Change Color </button>
           </form>
+    </TabPanel>
+    <TabPanel>
+      <h2>Any content 2</h2>
+    </TabPanel>
+  </Tabs>
       </div>
     );
   }
