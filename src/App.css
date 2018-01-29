@@ -18,6 +18,7 @@
 #displayImg{
   background-color: white;
   color:black;
+  width: 90%;
 }
 
 @keyframes App-logo-spin {
