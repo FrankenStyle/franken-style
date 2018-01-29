@@ -52,8 +52,12 @@ class App extends Component {
         </header>
         <Tabs>
         <TabList >
-        <Tab>Title 1</Tab>
-        <Tab>Title 2</Tab>
+        <Tab>Color/Background</Tab>
+        <Tab>Flex</Tab>
+        <Tab>Text</Tab>
+        <Tab>Border</Tab>
+        <Tab>Position</Tab>
+        <Tab>Row</Tab>
         </TabList>
         
         <TabPanel>
@@ -64,8 +68,20 @@ class App extends Component {
           </form>
     </TabPanel>
     <TabPanel>
-      <h2>Any content 2</h2>
+    <h2>Flex</h2>
+  </TabPanel>
+    <TabPanel>
+      <h2>Text</h2>
     </TabPanel>
+    <TabPanel>
+    <h2>Border</h2>
+  </TabPanel>
+  <TabPanel>
+  <h2>Position</h2>
+</TabPanel>
+<TabPanel>
+<h2>Row</h2>
+</TabPanel>
   </Tabs>
       </div>
     );
