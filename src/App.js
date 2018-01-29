@@ -21,11 +21,12 @@ class App extends Component {
     chrome.runtime.onMessage.addListener((request,sender,sendResponse) => {
 
       var selectedClassName = request.selectedClassName;
-      var selectedNode = request.selectedNode;
+      var selectedNode = request.selectedNode.toLowerCase();
       var selectedClassList = request.selectedClassList;
+      var display = selectedNode+"."+selectedClassName
 
       // console.log("request Obj", request)
-      this.setState({element: selectedNode})
+      this.setState({element: display})
       sendResponse({test:'test'})
     })
   }
