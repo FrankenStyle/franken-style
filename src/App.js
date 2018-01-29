@@ -22,7 +22,7 @@ class App extends Component {
       var selectedNode = request.selectedNode;
       var selectedClassList = request.selectedClassList;
 
-      console.log("request Obj", request)
+      // console.log("request Obj", request)
       this.setState({element: selectedNode})
       sendResponse({test:'test'})
     })

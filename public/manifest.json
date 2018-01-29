@@ -9,6 +9,12 @@
     "default_popup": "index.html",
     "default_title": "ChromiePop"
   },
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "./eventPage.js"
+    ]
+  },
   "content_scripts": [
     {
       "matches": [
